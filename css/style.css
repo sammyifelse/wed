@@ -1405,11 +1405,15 @@ body.pamphlet-locked, html.pamphlet-locked {
 /* Flap Title Names */
 .flap-names {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: clamp(1.1rem, 5vw, 3rem);
   font-weight: 300;
   color: var(--text-gold);
   letter-spacing: 0.15rem;
   transition: transform 1s ease, opacity 0.8s ease;
+  max-width: 46%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .left-names {
@@ -1502,7 +1506,8 @@ body.pamphlet-locked, html.pamphlet-locked {
 /* Responsive adjustments for cover flaps */
 @media screen and (max-width: 768px) {
   .flap-names {
-    font-size: 2.2rem;
+    font-size: clamp(1rem, 6vw, 2.2rem);
+    max-width: 60%;
   }
   .left-names {
     right: 30px;
@@ -1517,4 +1522,20 @@ body.pamphlet-locked, html.pamphlet-locked {
   .seal-initials {
     font-size: 1.25rem;
   }
+}
+
+/* Extra small screens: stack/center flap names and allow full width */
+@media screen and (max-width: 480px) {
+  .flap-names {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    text-align: center;
+    max-width: 90%;
+    font-size: 1.0rem;
+    padding: 0 8px;
+  }
+  .flap-content { justify-content: center; }
 }
