@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nabanita & Dhrubajyoti — Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Pamphlet Gatefold Cover -->
+  <div class="pamphlet-overlay" id="pamphletOverlay">
+    <div class="pamphlet-flap left-flap">
+      <div class="flap-content">
+        <div class="corner-frame tl"></div>
+        <div class="corner-frame bl"></div>
+        <div class="flap-names left-names">Nabanita</div>
+      </div>
+    </div>
+    <div class="pamphlet-flap right-flap">
+      <div class="flap-content">
+        <div class="corner-frame tr"></div>
+        <div class="corner-frame br"></div>
+        <div class="flap-names right-names">&amp; Dhrubajyoti</div>
+      </div>
+    </div>
+    <div class="wax-seal" id="waxSeal">
+      <div class="seal-inner">
+        <span class="seal-ornament">✦</span>
+        <span class="seal-initials">N &amp; D</span>
+        <span class="seal-label">TAP TO OPEN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Petal Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- Glow orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="corner-frame tl"></div>
+    <div class="corner-frame tr"></div>
+    <div class="corner-frame bl"></div>
+    <div class="corner-frame br"></div>
+
+    <div class="hero-content">
+      <p class="tagline anim-fade" data-delay="300">Together Forever</p>
+      <div class="gold-line anim-line" data-delay="500"></div>
+      <div class="ornament anim-scale" data-delay="700">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <div class="gold-line anim-line" data-delay="900"></div>
+
+      <h1 class="names anim-rise" data-delay="1000">
+        Nabanita
+        <span class="ampersand">&amp;</span>
+        Dhrubajyoti
+      </h1>
+
+      <div class="gold-line anim-line" data-delay="1400"></div>
+      <p class="date-row anim-fade" data-delay="1600">Thursday &nbsp;·&nbsp; 3 December 2026 &nbsp;·&nbsp; Guwahati</p>
+      <div class="gold-line anim-line" data-delay="1800"></div>
+
+      <p class="invite-text anim-fade" data-delay="2000">
+        Request the honour of your presence<br />to celebrate their sacred union
+      </p>
+
+      <a href="#details" class="scroll-btn anim-fade" data-delay="2400">
+        <span>View Invitation</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">N &amp; D</a>
+      <ul class="nav-links">
+        <li><a href="#photos">Moments</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#venue">Venue</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+  <!-- ========== PHOTO FRAMES ========== -->
+  <section class="photo-section" id="photos">
+    <div class="section-header reveal">
+      <p class="section-sub">Our Moments</p>
+      <h2 class="section-title">Nabanita &amp; Dhrubajyoti</h2>
+      <div class="gold-line-sm"></div>
+    </div>
+    <div class="photo-wrap reveal">
+      <div class="photo-frame left-frame no-img">
+        <img src="images/couple1.jpg" alt="Nabanita &amp; Dhrubajyoti 1"
+          onerror="this.parentElement.classList.add('no-img')" />
+      </div>
+      <div class="photo-frame featured-frame no-img">
+        <img src="images/couple2.jpg" alt="Nabanita &amp; Dhrubajyoti 2"
+          onerror="this.parentElement.classList.add('no-img')" />
+      </div>
+      <div class="photo-frame right-frame no-img">
+        <img src="images/couple3.jpg" alt="Nabanita &amp; Dhrubajyoti 3"
+          onerror="this.parentElement.classList.add('no-img')" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COUNTDOWN TIMER ========== -->
+  <section class="countdown-section" id="countdown">
+    <div class="section-header reveal">
+      <p class="section-sub">The Day Begins In</p>
+      <h2 class="section-title">The Countdown</h2>
+      <div class="gold-line-sm"></div>
+    </div>
+    <div class="countdown-row reveal" id="countdownRow">
+      <div class="countdown-card">
+        <div class="countdown-val" id="days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-val" id="hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-val" id="minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-val" id="seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EVENT DETAILS ========== -->
+  <section class="details-section" id="details">
+    <div class="section-header reveal">
+      <p class="section-sub">Join Our Celebration</p>
+      <h2 class="section-title">The Wedding</h2>
+      <div class="gold-line-sm"></div>
+    </div>
+
+    <div class="events-grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto;">
+      <div class="event-card reveal featured">
+        <div class="event-icon">🪔</div>
+        <h3 class="event-name">Wedding Ceremony</h3>
+        <p class="event-date">Thursday, 3 December 2026</p>
+        <p class="event-time">Food served from 1:30 AM onwards</p>
+        <div class="event-divider"></div>
+        <p class="event-venue">Wedding Venue</p>
+        <p class="event-address">3HXR+GVM, Dekapara Rd, Borjhar, Guwahati, Kahikuchi, Assam — 781015</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VENUE / MAP ========== -->
+  <section class="venue-section" id="venue">
+    <div class="section-header reveal">
+      <p class="section-sub">Find Us</p>
+      <h2 class="section-title">The Venue</h2>
+      <div class="gold-line-sm"></div>
+    </div>
+
+    <div class="venue-wrap reveal">
+      <div class="venue-info">
+        <h3 class="venue-name">Wedding Venue</h3>
+        <p class="venue-addr">3HXR+GVM, Dekapara Rd,<br />Borjhar, Guwahati, Kahikuchi — 781015<br />Assam, India</p>
+        <a class="directions-btn"
+          href="https://www.google.com/maps/dir/?api=1&destination=3HXR%2BGVM%2C+Dekapara+Rd%2C+Borjhar%2C+Guwahati%2C+Kahikuchi%2C+Assam+781015" target="_blank">
+          📍 Get Directions
+        </a>
+        <!-- ✏️ HOW TO SET YOUR MAP:
+             Replace the src below with YOUR Google Maps embed URL:
+             1. Go to maps.google.com
+             2. Search your venue
+             3. Click Share → Embed a map → Copy HTML
+             4. Paste only the src="..." part below
+        -->
+      </div>
+      <div class="map-container">
+        <iframe id="venueMap"
+          src="https://maps.google.com/maps?q=3HXR%2BGVM%2C%20Dekapara%20Rd%2C%20Borjhar%2C%20Guwahati%2C%20Kahikuchi%2C%20Assam%20781015&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Wedding Venue Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="ornament" style="font-size:18px;opacity:0.6;margin-bottom:16px">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <h2 class="footer-names">Nabanita &amp; Dhrubajyoti</h2>
+      <div class="gold-line-sm" style="margin:16px auto;max-width:200px"></div>
+      <p class="footer-date">3 December 2026 · Guwahati</p>
+      <p class="footer-quote">"Two souls, one heart — forever entwined."</p>
+      <p class="footer-credit">Made with love ♥</p>
+    </div>
+  </footer>
+  <script src="js/pamphlet.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+
+</html>
