@@ -7,6 +7,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('pamphletOverlay');
   const waxSeal = document.getElementById('waxSeal');
+  // Runtime name config (ensure groom appears first)
+  const groomName = 'Dhrubajyoti';
+  const brideName = 'Nabanita';
+
+  // Ensure flap texts and seal initials reflect desired order at runtime
+  const leftNameEl = document.querySelector('.flap-names.left-names');
+  const rightNameEl = document.querySelector('.flap-names.right-names');
+  const sealInitialsEl = document.querySelector('.seal-initials');
+  if (leftNameEl) leftNameEl.textContent = groomName;
+  if (rightNameEl) rightNameEl.textContent = `& ${brideName}`;
+  if (sealInitialsEl) sealInitialsEl.textContent = `${groomName.charAt(0)} & ${brideName.charAt(0)}`;
   
   if (!overlay) return;
 
