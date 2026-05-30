@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastScrollY = window.scrollY;
   let ticking = false;
 
+  const enableParallax = window.innerWidth > 900 && !( 'ontouchstart' in window || navigator.maxTouchPoints > 0 );
+
   function updateParallax() {
     const scrollY = window.scrollY;
     
@@ -90,13 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ticking = false;
   }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateParallax();
-        lastScrollY = window.scrollY;
-      });
-      ticking = true;
-    }
-  });
+  if (enableParallax) {
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateParallax();
+          lastScrollY = window.scrollY;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
 });

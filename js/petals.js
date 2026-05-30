@@ -11,21 +11,25 @@
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
 
-  // Particle Settings
-  const maxPetals = 45;
+  // Performance-aware Particle Settings
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isSmallScreen = window.innerWidth <= 600;
+  const maxPetals = isSmallScreen || isTouch ? 18 : 45;
   const petals = [];
-  const mouse = { x: -1000, y: -1000, radius: 150 };
+  const mouse = { x: -1000, y: -1000, radius: isSmallScreen ? 80 : 150 };
 
-  // Track mouse coordinates
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
+  // Track mouse coordinates (disabled on touch devices to reduce work)
+  if (!isTouch) {
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
 
-  window.addEventListener('mouseleave', () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
-  });
+    window.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+  }
 
   // Handle window resizing
   window.addEventListener('resize', () => {
@@ -156,8 +160,22 @@
     petals.push(new Petal());
   }
 
-  // Animation Loop
-  function animate() {
+  // Animation Loop with throttling and visibility handling
+  let running = true;
+  let lastFrame = performance.now();
+  const fps = isSmallScreen || isTouch ? 30 : 60;
+  const frameInterval = 1000 / fps;
+
+  function animate(now) {
+    if (!running) return;
+
+    const elapsed = now - lastFrame;
+    if (elapsed < frameInterval) {
+      requestAnimationFrame(animate);
+      return;
+    }
+    lastFrame = now - (elapsed % frameInterval);
+
     ctx.clearRect(0, 0, width, height);
 
     for (let i = 0; i < petals.length; i++) {
@@ -168,6 +186,19 @@
     requestAnimationFrame(animate);
   }
 
+  // Pause when tab is hidden to save CPU/battery
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      running = false;
+    } else {
+      if (!running) {
+        running = true;
+        lastFrame = performance.now();
+        requestAnimationFrame(animate);
+      }
+    }
+  });
+
   // Start animation loop
-  animate();
+  requestAnimationFrame(animate);
 })();
