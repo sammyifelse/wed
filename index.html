@@ -10,7 +10,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" href="css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 
 <body>
@@ -93,6 +94,7 @@
         <li><a href="#photos">Moments</a></li>
         <li><a href="#details">Details</a></li>
         <li><a href="#venue">Venue</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -110,15 +112,15 @@
     <div class="photo-wrap reveal">
       <div class="photo-frame left-frame no-img">
         <img src="images/couple1.jpg" alt="Nabanita &amp; Dhrubajyoti 1"
-          onerror="this.parentElement.classList.add('no-img')" />
+          loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
       </div>
       <div class="photo-frame featured-frame no-img">
         <img src="images/couple2.jpg" alt="Nabanita &amp; Dhrubajyoti 2"
-          onerror="this.parentElement.classList.add('no-img')" />
+          loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
       </div>
       <div class="photo-frame right-frame no-img">
         <img src="images/couple3.jpg" alt="Nabanita &amp; Dhrubajyoti 3"
-          onerror="this.parentElement.classList.add('no-img')" />
+          loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
       </div>
     </div>
   </section>
@@ -206,6 +208,21 @@
 
 
   <!-- ========== FOOTER ========== -->
+  <!-- ========== CONTACT ========== -->
+  <section class="contact-section" id="contact">
+    <div class="section-header reveal">
+      <p class="section-sub">Reach Us</p>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="gold-line-sm"></div>
+    </div>
+
+    <div class="contact-row reveal" style="max-width:600px;margin:0 auto;text-align:center;">
+      <p class="contact-text">For any queries or assistance, call:</p>
+      <a href="tel:+919957212604" class="phone-link">+91 9957212604</a>
+      <br />
+      <a href="tel:+917099259896" class="phone-link">+91 7099259896</a>
+    </div>
+  </section>
   <footer class="footer">
     <div class="footer-inner">
       <div class="ornament" style="font-size:18px;opacity:0.6;margin-bottom:16px">✦ &nbsp; ✦ &nbsp; ✦</div>
@@ -217,10 +234,11 @@
     </div>
   </footer>
   <script src="js/pamphlet.js"></script>
-  <script src="js/countdown.js"></script>
-  <script src="js/petals.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/nav.js"></script>
+  <script src="js/pamphlet.js" defer></script>
+  <script src="js/countdown.js" defer></script>
+  <script src="js/petals.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/nav.js" defer></script>
 </body>
 
 </html>
