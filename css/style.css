@@ -284,13 +284,83 @@ body {
   margin: 0.5rem 0;
 }
 
-.date-row {
-  font-size: 1.15rem;
-  font-weight: 300;
-  letter-spacing: 0.15rem;
+.scratch-date {
+  width: min(100%, 360px);
+  min-height: 116px;
+  margin: 1.25rem auto 0.5rem;
+  position: relative;
+}
+
+.scratch-coins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.45rem, 2vw, 0.8rem);
+}
+
+.scratch-coin {
+  width: clamp(74px, 22vw, 96px);
+  aspect-ratio: 1;
+  position: relative;
+  flex: 0 1 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(181, 148, 65, 0.55);
+  box-shadow: 0 8px 24px rgba(181, 148, 65, 0.16), inset 0 0 0 5px rgba(255, 255, 255, 0.45);
+  background: #f8f0d9;
+}
+
+.scratch-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-primary);
-  margin: 1rem 0;
+  text-align: center;
   text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 5vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02rem;
+  padding: 0.35rem;
+}
+
+.scratch-coin-month .scratch-value {
+  font-size: clamp(0.82rem, 3vw, 1.05rem);
+}
+
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  transition: opacity 0.7s ease;
+}
+
+.scratch-hint {
+  display: block;
+  margin-top: 0.7rem;
+  text-align: center;
+  color: rgba(74, 56, 27, 0.74);
+  font-size: 0.58rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.scratch-coin.cleared .scratch-canvas {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scratch-date.all-cleared .scratch-hint {
+  opacity: 0;
 }
 
 .invite-text {

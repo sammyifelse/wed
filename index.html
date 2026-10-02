@@ -70,7 +70,23 @@
       </h1>
 
       <div class="gold-line anim-line" data-delay="1400"></div>
-      <p class="date-row anim-fade" data-delay="1600">Thursday &nbsp;·&nbsp; 3 December 2026 &nbsp;·&nbsp; Guwahati</p>
+      <div class="scratch-date anim-fade" data-delay="1600" aria-label="Scratch each circle to reveal the wedding date">
+        <div class="scratch-coins">
+          <div class="scratch-coin">
+            <strong class="scratch-value">3</strong>
+            <canvas class="scratch-canvas" aria-label="Scratch to reveal 3"></canvas>
+          </div>
+          <div class="scratch-coin scratch-coin-month">
+            <strong class="scratch-value">December</strong>
+            <canvas class="scratch-canvas" aria-label="Scratch to reveal December"></canvas>
+          </div>
+          <div class="scratch-coin">
+            <strong class="scratch-value">2026</strong>
+            <canvas class="scratch-canvas" aria-label="Scratch to reveal 2026"></canvas>
+          </div>
+        </div>
+        <span class="scratch-hint">Scratch all three to reveal</span>
+      </div>
       <div class="gold-line anim-line" data-delay="1800"></div>
 
       <p class="invite-text anim-fade" data-delay="2000">
@@ -237,6 +253,7 @@
   <script src="js/pamphlet.js"></script>
   <script src="js/pamphlet.js" defer></script>
   <script src="js/countdown.js" defer></script>
+  <script src="js/scratch-card.js" defer></script>
   <script src="js/petals.js" defer></script>
   <script src="js/animations.js" defer></script>
   <script src="js/nav.js" defer></script>
