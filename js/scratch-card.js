@@ -13,14 +13,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const context = canvas.getContext('2d');
     let isScratching = false;
     let lastPoint = null;
+    let isRevealed = false;
 
     function resizeCanvas() {
+      if (isRevealed) return;
       const bounds = canvas.getBoundingClientRect();
       const pixelRatio = window.devicePixelRatio || 1;
       canvas.width = bounds.width * pixelRatio;
       canvas.height = bounds.height * pixelRatio;
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       paintCover(bounds.width, bounds.height);
+    }
+
+    function revealIfReady() {
+      if (isRevealed) return;
+
+      const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      let transparentPixels = 0;
+      const sampleStep = 4;
+      const totalSamples = Math.ceil(pixels.length / (4 * sampleStep));
+
+      for (let index = 3; index < pixels.length; index += 4 * sampleStep) {
+        if (pixels[index] < 40) transparentPixels += 1;
+      }
+
+      if (transparentPixels / totalSamples >= 0.55) {
+        isRevealed = true;
+        coin.classList.add('cleared');
+        if (card.querySelectorAll('.scratch-coin.cleared').length === coins.length) {
+          card.classList.add('all-cleared');
+        }
+      }
     }
 
     function paintCover(width, height) {
@@ -72,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopScratching() {
       isScratching = false;
       lastPoint = null;
+      revealIfReady();
     }
 
     canvas.addEventListener('pointerdown', (event) => {
