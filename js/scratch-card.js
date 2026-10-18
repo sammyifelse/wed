@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
       paintCover(bounds.width, bounds.height);
     }
 
+    function revealDate() {
+      coins.forEach((item) => item.classList.add('cleared'));
+      card.classList.add('all-cleared');
+      isRevealed = true;
+    }
+
     function revealIfReady() {
       if (isRevealed) return;
 
@@ -37,13 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pixels[index] < 40) transparentPixels += 1;
       }
 
-      if (transparentPixels / totalSamples >= 0.55) {
-        isRevealed = true;
-        coin.classList.add('cleared');
-        if (card.querySelectorAll('.scratch-coin.cleared').length === coins.length) {
-          card.classList.add('all-cleared');
-        }
-      }
+      if (transparentPixels / totalSamples >= 0.05) revealDate();
     }
 
     function paintCover(width, height) {
